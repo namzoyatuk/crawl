@@ -1,20 +1,28 @@
 # Crawl
-Website crawler using Celery, Redis, FastAPI and Docker
 
-Provides an API endpoint that crawls data of each corporate in the https://ranking.glassdollar.com/ via Celery processes in parallel and returns the data in JSON format.
-
+Crawl website crawler built with Celery, Redis, FastAPI, and Docker. It provides an API endpoint that crawls data of each corporate in the [Glass Dollar Ranking](https://ranking.glassdollar.com/) page, processes it in parallel using Celery, and returns the data in JSON format.
 
 ## Prerequisites
 
-- Docker is up and running
-- In your local machine port 80 must be available
+Before you begin, ensure you have met the following requirements:
 
-## Run
+- Docker is installed and running on your machine.
+- Port 80 is available on your local machine.
 
-- In the project directory run in terminal `docker-compose up`
-- Send an HTTP GET request with your desired method to http://localhost/crawl
+## Installation
+
+- Clone the repository to your local machine.
+- Navigate to the project directory.
+- Run the following command in the terminal:
+ 
+  `docker-compose up`
+
+## Usage
+
+To use, send an HTTP GET request with your desired method to the following endpoint: http://localhost/crawl
 
 ## Swagger UI
 
-You can also use Swagger UI in order to make a request.
+Crawl also provides a Swagger UI for easier interaction. You can access it at the following URL:
+
 http://localhost/api/v1/crawler/docs
