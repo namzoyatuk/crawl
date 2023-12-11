@@ -1,0 +1,28 @@
+services:
+
+  app:
+    container_name: app
+    build: .
+    command: uvicorn endpoint:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - 80:8000
+    restart: always
+
+  redis:
+    container_name: redis
+    image: redis:latest
+
+  celery_worker:
+    container_name: celery_worker
+    build: .
+    command: celery -A tasks worker --loglevel=info
+    volumes:
+      -  .:/app
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - app
+      - redis
